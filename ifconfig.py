@@ -9,7 +9,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def remote_addr():
-    return Response(request.remote_addr, mimetype='text/plain; charset=utf-8')
+    try:
+        ip = request.headers['X-Forwarded-For']
+    except KeyError:
+        ip = request.remote_addr
+    return Response(ip, mimetype='text/plain; charset=utf-8')
 
 if __name__ == '__main__':
     with DaemonContext(pidfile=TimeoutPIDLockFile(pidfile_path)):
