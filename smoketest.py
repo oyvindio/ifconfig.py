@@ -1,5 +1,8 @@
 #!/usr/bin/env python
+from __future__ import absolute_import
+from __future__ import division
 from __future__ import print_function
+from __future__ import unicode_literals
 import os
 import sys
 import requests
@@ -9,7 +12,10 @@ import socket
 def ipaddr_response():
     res = requests.get('http://oyvind.io/ip')
     res.raise_for_status()
-    return res.content
+    if sys.version_info.major > 2:
+        return res.content.decode('utf-8')
+    else:
+        return res.content
 
 def is_valid_ipaddr(address_family, ipaddr):
     try:
