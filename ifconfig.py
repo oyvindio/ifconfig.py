@@ -12,4 +12,4 @@ def remote_addr():
     return Response(ip, mimetype='text/plain; charset=utf-8')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8888)
