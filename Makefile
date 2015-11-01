@@ -9,3 +9,6 @@ deploy:
 
 smoketest:
 	./smoketest.py
+
+test:
+	py.test .
