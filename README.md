@@ -1,4 +1,4 @@
-![Travis build status for branch master](https://travis-ci.org/oyvindio/ifconfig.py.svg?branch=master)
+[![Build Status](https://travis-ci.org/oyvindio/ifconfig.py.svg?branch=master)](https://travis-ci.org/oyvindio/ifconfig.py)
 
 # ifconfig.py
 
