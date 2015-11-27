@@ -1,0 +1,15 @@
+[Unit]
+Description=ifconfig.py (docker)
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop ifconfig.py
+ExecStartPre=-/usr/bin/docker rm ifconfig.py
+ExecStartPre=/usr/bin/docker pull oyvindio/ifconfig.py
+ExecStart=/usr/bin/docker run --log-driver=journald --rm --name ifconfig.py --publish 127.0.0.1:8888:8888 oyvindio/ifconfig.py
+
+[Install]
+WantedBy=multi-user.target
