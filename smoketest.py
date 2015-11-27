@@ -9,8 +9,8 @@ import requests
 import socket
 
 
-def ipaddr_response():
-    res = requests.get('http://oyvind.io/ip')
+def ipaddr_response(url):
+    res = requests.get(url)
     res.raise_for_status()
     if sys.version_info.major > 2:
         return res.content.decode('utf-8')
@@ -32,8 +32,12 @@ if __name__ == '__main__':
         def ok(): print('Smoketest OK')
         def fail(): sys.exit('Smoketest FAILED')
 
+    if len(sys.argv) < 2:
+        print('Usage: ./smoketest.py URL')
+        fail()
+
     try:
-        ipaddr = ipaddr_response()
+        ipaddr = ipaddr_response(sys.argv[1])
     except requests.exceptions.HTTPError:
         fail()
 
