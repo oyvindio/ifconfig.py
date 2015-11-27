@@ -9,4 +9,4 @@ ADD test_ifconfig.py /app/test_ifconfig.py
 ADD requirements.txt /app/requirements.txt
 RUN cd /app && pip install -r requirements.txt && py.test .
 EXPOSE 8888
-ENTRYPOINT ["python3", "/app/ifconfig.py"]
+ENTRYPOINT ["gunicorn", "--chdir", "/app", "--bind", "0.0.0.0:8888", "ifconfig:app"]
