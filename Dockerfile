@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.4
 MAINTAINER oyvindio <oyvind.overgaard@gmail.com>
 RUN apk update && \
 apk add python3 && \
