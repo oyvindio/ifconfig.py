@@ -2,7 +2,7 @@ FROM alpine:3.4
 MAINTAINER oyvindio <oyvind.overgaard@gmail.com>
 RUN apk update && \
 apk add python3 && \
-easy_install-3.4 pip && \
+easy_install-3.5 pip && \
 rm -rf /var/cache/apk/*
 ADD ifconfig.py /app/
 ADD test_ifconfig.py /app/
